@@ -45,20 +45,19 @@ print(result)
 result = corresponding_parenthesis(")(")
 print(result)
 
-
-
-
-
-
-
-
 def remove_more_than_two_repetitions(text):
     res = []
     res[:] = text
+    retorno = []
     
-    resu = [i for i, j in zip_longest(res, res[1:])
-                                                if i != j]
-    return resu
+    for i in range(len(res)):
+        if len(retorno) < 2:
+            retorno.append(res[i])
+        else:
+            if retorno[len(retorno) -1] != res[i] or retorno[len(retorno) -2] != res[i]:
+                retorno.append(res[i])
+                                             
+    return ''.join(retorno)
 
 text2 = "Ollloco meuuuu, taaa peegaando fogoo biiiiichooo"
 text = remove_more_than_two_repetitions(text2)
